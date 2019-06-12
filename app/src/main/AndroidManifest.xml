@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".homografaWord"></activity>
+        <activity android:name=".homografasWord1"></activity>
+        <activity android:name=".homofonasWord1" />
+        <activity android:name=".homografaWord" />
         <activity android:name=".homografasList" />
         <activity android:name=".homofonasList" />
         <activity android:name=".MainActivity">

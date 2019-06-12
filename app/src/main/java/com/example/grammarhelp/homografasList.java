@@ -1,4 +1,5 @@
 package com.example.grammarhelp;
+import android.view.View;
 import android.widget.*;
 import android.content.Intent;
 
@@ -12,6 +13,11 @@ public class homografasList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homografas_list);
         Intent intent = getIntent();
+    }
+
+    public void toHomografaWord (View view) {
+        Intent intent = new Intent(this, homografasWord1.class);
+        startActivity(intent);
     }
 
 
