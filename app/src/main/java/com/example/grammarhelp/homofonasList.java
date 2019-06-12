@@ -1,4 +1,5 @@
 package com.example.grammarhelp;
+import android.view.View;
 import android.widget.*;
 import android.content.Intent;
 
@@ -12,6 +13,11 @@ public class homofonasList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homofonas_list);
         Intent intent = getIntent();
+    }
+
+    public void toHomofonaWord (View view) {
+        Intent intent = new Intent(this, homofonasWord1.class);
+        startActivity(intent);
     }
 
     
