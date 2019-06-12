@@ -18,4 +18,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void toHomografas (View view) {
+        Intent intent = new Intent(this, homografasList.class);
+        startActivity(intent);
+    }
+
+
 }
