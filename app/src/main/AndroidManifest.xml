@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".homografasWord1"></activity>
+        <activity android:name=".homofonasSearch"></activity>
+        <activity android:name=".homografasWord2" />
+        <activity android:name=".homofonasWord2" />
+        <activity android:name=".homografasWord1" />
         <activity android:name=".homofonasWord1" />
         <activity android:name=".homografaWord" />
         <activity android:name=".homografasList" />
