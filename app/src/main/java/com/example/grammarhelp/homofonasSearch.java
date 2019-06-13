@@ -13,5 +13,15 @@ public class homofonasSearch extends AppCompatActivity {
         Intent intent = getIntent();
     }
 
+    public void toHomofonaWord (View view) {
+        Intent intent = new Intent(this, homofonasWord1.class);
+        startActivity(intent);
+    }
+
+    public void toHomofonasSearch (View view) {
+        Intent intent = new Intent(this, homofonasSearch.class);
+        startActivity(intent);
+    }
+
 
 }
