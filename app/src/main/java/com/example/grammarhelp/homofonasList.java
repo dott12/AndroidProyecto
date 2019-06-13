@@ -20,5 +20,10 @@ public class homofonasList extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void toHomofonasSearch (View view) {
+        Intent intent = new Intent(this, homofonasSearch.class);
+        startActivity(intent);
+    }
+
     
 }
