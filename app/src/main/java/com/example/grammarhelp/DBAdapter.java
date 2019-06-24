@@ -26,7 +26,7 @@ public class DBAdapter {
     static final String DATABASE_CREATE =
             "create table contacts (_id integer primary key autoincrement, "
                     + "name text not null, " +
-                    "meaning text not null,example text not null,counterpart text not null);";
+                    "meaning text not null,example text not null, _idCounter integer);";
     final Context context;
     DatabaseHelper DBHelper;
     SQLiteDatabase db;
@@ -75,7 +75,7 @@ public class DBAdapter {
         DBHelper.close();
     }
     //---insert a contact into the database---
-    public long insertContact(String name,  String meaning, String example, String counterpart)
+    public long insertContact(String name,  String meaning, String example, int counterpart)
     {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_NAME, name);
@@ -117,7 +117,7 @@ public class DBAdapter {
         return mCursor;
     }
     //---updates a contact---
-    public boolean updateContact(long rowId, String name, String meaning, String example, String counterpart)
+    public boolean updateContact(long rowId, String name, String meaning, String example, int counterpart)
     {
         ContentValues args = new ContentValues();
         args.put(KEY_NAME, name);
