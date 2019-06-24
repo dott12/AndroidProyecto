@@ -16,14 +16,17 @@ public class DBAdapter {
 
     static final String KEY_ROWID = "_id";
     static final String KEY_NAME = "name";
-    static final String KEY_EMAIL = "email";
+    static final String KEY_MEANING = "meaning";
+    static final String KEY_EXAMPLE = "example";
+    static final String KEY_COUNTERPART = "counterpart";
     static final String TAG = "DBAdapter";
     static final String DATABASE_NAME = "MyDB";
     static final String DATABASE_TABLE = "contacts";
     static final int DATABASE_VERSION = 2;
     static final String DATABASE_CREATE =
             "create table contacts (_id integer primary key autoincrement, "
-                    + "name text not null, email text not null);";
+                    + "name text not null, " +
+                    "meaning text not null,example text not null,counterpart text not null);";
     final Context context;
     DatabaseHelper DBHelper;
     SQLiteDatabase db;
@@ -72,11 +75,13 @@ public class DBAdapter {
         DBHelper.close();
     }
     //---insert a contact into the database---
-    public long insertContact(String name, String email)
+    public long insertContact(String name,  String meaning, String example, String counterpart)
     {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_NAME, name);
-        initialValues.put(KEY_EMAIL, email);
+        initialValues.put(KEY_MEANING, meaning);
+        initialValues.put(KEY_EXAMPLE, example);
+        initialValues.put(KEY_COUNTERPART, counterpart);
         return db.insert(DATABASE_TABLE, null, initialValues);
     }
     //---deletes a particular contact---
@@ -87,15 +92,24 @@ public class DBAdapter {
     //---retrieves all the contacts---
     public Cursor getAllContacts()
     {
-        return db.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_NAME,
-                KEY_EMAIL}, null, null, null, null, null);
+        return db.query(
+                DATABASE_TABLE, new String[] {
+                        KEY_ROWID,
+                        KEY_NAME,
+                        KEY_MEANING,
+                        KEY_EXAMPLE,
+                        KEY_COUNTERPART}, null, null, null, null, null);
     }
     //---retrieves a particular contact---
     public Cursor getContact(long rowId) throws SQLException
     {
         Cursor mCursor =
-                db.query(true, DATABASE_TABLE, new String[] {KEY_ROWID,
-                                KEY_NAME, KEY_EMAIL}, KEY_ROWID + "=" + rowId, null,
+                db.query(true, DATABASE_TABLE, new String[]
+                                {       KEY_ROWID,
+                                        KEY_NAME,
+                                        KEY_MEANING,
+                                        KEY_EXAMPLE,
+                                        KEY_COUNTERPART}, KEY_ROWID + "=" + rowId, null,
                         null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -103,11 +117,14 @@ public class DBAdapter {
         return mCursor;
     }
     //---updates a contact---
-    public boolean updateContact(long rowId, String name, String email)
+    public boolean updateContact(long rowId, String name, String meaning, String example, String counterpart)
     {
         ContentValues args = new ContentValues();
         args.put(KEY_NAME, name);
-        args.put(KEY_EMAIL, email);
+        args.put(KEY_MEANING, meaning);
+        args.put(KEY_EXAMPLE, example);
+        args.put(KEY_COUNTERPART, counterpart);
+
         return db.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;
     }
 }
