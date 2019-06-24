@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
+    DBAdapter db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        db = new DBAdapter(this);
     }
 
     public void toHomofonas (View view) {
