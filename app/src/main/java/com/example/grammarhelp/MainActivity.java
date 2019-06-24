@@ -19,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         db = new DBAdapter(this);
-        //InicializarBD();
+        InicializarBD();
+
 
 
     }
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         // String name,  String meaning, String example, String counterpart
         db.open();
         //long _id = db.insertContact("Aremos","Forma del verbo arar","Aremos la tierra para que crezca",2);
-        //long _id2 = db.insertContact("Aremos","Forma del verbo arar","Aremos la tierra para que crezca",2);
+        long _id2 = db.insertContact("Aremos","Forma del verbo arar","Aremos la tierra para que crezca",2);
         db.close();
     }
 

@@ -22,11 +22,12 @@ public class DBAdapter {
     static final String TAG = "DBAdapter";
     static final String DATABASE_NAME = "MyDB";
     static final String DATABASE_TABLE = "contacts";
-    static final int DATABASE_VERSION = 2;
+    static final int DATABASE_VERSION = 3;
     static final String DATABASE_CREATE =
             "create table contacts (_id integer primary key autoincrement, "
                     + "name text not null, " +
-                    "meaning text not null,example text not null, _idCounter integer);";
+                    "meaning text not null,example text not null, counterpart integer not null);";
+
     final Context context;
     DatabaseHelper DBHelper;
     SQLiteDatabase db;
@@ -53,6 +54,12 @@ public class DBAdapter {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+
+
+
+
+
+
         }
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
@@ -100,6 +107,7 @@ public class DBAdapter {
                         KEY_EXAMPLE,
                         KEY_COUNTERPART}, null, null, null, null, null);
     }
+
     //---retrieves a particular contact---
     public Cursor getContact(long rowId) throws SQLException
     {
