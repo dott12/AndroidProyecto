@@ -65,4 +65,25 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void DisplayContact(Cursor c)
+    {
+        Toast.makeText(this,
+                "id: " + c.getString(0) + "\n" +
+                        "Name: " + c.getString(1) + "\n" +
+                        "Email: " + c.getString(2)+ "\n" +
+                 " ",
+                Toast.LENGTH_LONG).show();
+
+    }
+
+    public void getOneContact () {
+        db.open();
+        Cursor c = db.getContact(numberID);
+        if (c.moveToFirst())
+            DisplayContact(c);
+        else
+            Toast.makeText(this, "No contact found", Toast.LENGTH_LONG).show();
+        db.close();
+    }
+
 }
