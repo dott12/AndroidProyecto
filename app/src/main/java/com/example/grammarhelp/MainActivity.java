@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 import android.database.Cursor;
 
@@ -33,11 +34,11 @@ public class MainActivity extends AppCompatActivity {
        // getOneContact();
         //deleteContact();
         //StringToArray();
-        //getAllContacts();
+        getAllContacts();
         //ClonarDato();
         //Palabra();
         //mostrarToast();
-        QueryPalabras("Haremos");
+        //QueryPalabras("Haremos");
 
     }
 
@@ -57,7 +58,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void toHomofonas (View view) {
+        EditText editText3 = (EditText) findViewById(R.id.editText3);
+        String wordToQ = editText3.getText().toString();
+
         Intent intent = new Intent(this, homofonasList.class);
+        intent.putExtra("wTQ", wordToQ);
         startActivity(intent);
     }
 
@@ -112,9 +117,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void mostrarToast(){
+    public void mostrarToast(String str){
 
-        Toast.makeText(this, StringToArray("Ana"), Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, StringToArray("Ana"), Toast.LENGTH_LONG).show();
 
     }
 
@@ -144,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void QueryPalabras (String query){
         //String query="Haremos";
+        String idWord="";
         String match="no match";
         db.open();
         Cursor c = db.getAllContacts();
@@ -152,8 +158,8 @@ public class MainActivity extends AppCompatActivity {
             do {
                 //query=getPalabra(c);
                 if (query.equalsIgnoreCase(getPalabra(c))){
-
-                    match = getID(c)+ " = "+ "match";
+                    idWord=getID(c);
+                    match = idWord+ " = "+ "match";
                 }
 
                 Toast.makeText(this, match, Toast.LENGTH_LONG).show();
@@ -168,6 +174,19 @@ public class MainActivity extends AppCompatActivity {
 
     public String getID(Cursor c){
         return c.getString(0);
+    }
+
+    public void cleanAll(){
+    int n=0;
+        db.open();
+        Cursor c = db.getAllContacts();
+        if (c.moveToFirst())
+        {
+            do {
+                n++;
+            } while (c.moveToNext());
+        }
+        db.close();
     }
 
 

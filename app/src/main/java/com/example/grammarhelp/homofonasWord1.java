@@ -46,8 +46,6 @@ public class homofonasWord1 extends AppCompatActivity {
         TextView ejemplo = (TextView) findViewById(R.id.textView4);
         TextView contraparte = (TextView) findViewById(R.id.textView5);
 
-
-
         db.open();
         Cursor c = db.getContact(7);
         if (c.moveToFirst()){
@@ -55,14 +53,11 @@ public class homofonasWord1 extends AppCompatActivity {
             palabra.setText(getPalabra(c));
             significado.setText(getSignificado(c));
             ejemplo.setText(getEjemplo(c));
-
-
         }
 
         else
             Toast.makeText(this, "No contact found", Toast.LENGTH_LONG).show();
         db.close();
-
     }
 
 
