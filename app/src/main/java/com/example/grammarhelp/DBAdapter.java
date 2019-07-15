@@ -31,6 +31,7 @@ public class DBAdapter {
     final Context context;
     DatabaseHelper DBHelper;
     SQLiteDatabase db;
+    String nombre = "aremos";
 
     public DBAdapter(Context ctx)
     {
@@ -124,6 +125,22 @@ public class DBAdapter {
         }
         return mCursor;
     }
+
+    public Cursor getPalabra(long rowId) throws SQLException
+    {
+        Cursor mCursor =
+                db.query(true, DATABASE_TABLE, new String[]
+                                {       KEY_ROWID,
+                                        KEY_NAME,
+                                        KEY_MEANING,
+                                        KEY_EXAMPLE,
+                                        KEY_COUNTERPART}, KEY_ROWID + "=" + rowId, null,
+                        null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
     //---updates a contact---
     public boolean updateContact(long rowId, String name, String meaning, String example, int counterpart)
     {
@@ -135,6 +152,19 @@ public class DBAdapter {
 
         return db.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;
     }
+
+    public Cursor getWord(String palabra){
+        String queryStudent = "SELECT * FROM contacts, contacts WHERE contacts.KEY_NAME = "+palabra+";";
+        Cursor mCursor = db.rawQuery(queryStudent, null);
+
+      return mCursor;
+    }
+
+
+
+
+
+
 }
 
 

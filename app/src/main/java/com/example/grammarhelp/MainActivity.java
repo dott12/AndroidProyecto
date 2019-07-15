@@ -12,6 +12,8 @@ public class MainActivity extends AppCompatActivity {
 
     DBAdapter db;
     ProcesosHF Procesos = new ProcesosHF();
+    int numberID=0;
+
 
 
     @Override
@@ -19,13 +21,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         db = new DBAdapter(this);
-        InicializarBD();
+       // InicializarBD();
+        //getOneContact();
 
 
 
     }
 
-    public void getAllContacts (View view){
+    public void botonGetData(View view){
+        //InicializarBD();
+       // getOneContact();
+        getAllContacts();
+        //Palabra();
+
+    }
+
+
+    public void getAllContacts (){
         db.open();
         Cursor c = db.getAllContacts();
         if (c.moveToFirst())
@@ -51,19 +63,11 @@ public class MainActivity extends AppCompatActivity {
     public void InicializarBD(){
         // String name,  String meaning, String example, String counterpart
         db.open();
-        //long _id = db.insertContact("Aremos","Forma del verbo arar","Aremos la tierra para que crezca",2);
-        long _id2 = db.insertContact("Aremos","Forma del verbo arar","Aremos la tierra para que crezca",2);
+        long _id = db.insertContact("Aremos","Forma del verbo arar","Aremos la tierra para que crezca",2);
+        long _id2 = db.insertContact("HAremos","Forma del verbo hacer","Haremos un mundo mejor",2);
         db.close();
     }
 
-
-    public void DisplayContact(Cursor c)
-    {
-        Toast.makeText(this,
-                "id: " + c.getString(0) + "\n",
-                Toast.LENGTH_LONG).show();
-
-    }
 
     public void DisplayContact(Cursor c)
     {
@@ -78,7 +82,20 @@ public class MainActivity extends AppCompatActivity {
 
     public void getOneContact () {
         db.open();
-        Cursor c = db.getContact(numberID);
+
+        Cursor c = db.getContact(1);
+        if (c.moveToFirst())
+            DisplayContact(c);
+        else
+            Toast.makeText(this, "No contact found", Toast.LENGTH_LONG).show();
+        db.close();
+    }
+
+    public void Palabra() {
+        db.open();
+        String word = "aremos";
+
+        Cursor c = db.getWord(word);
         if (c.moveToFirst())
             DisplayContact(c);
         else
