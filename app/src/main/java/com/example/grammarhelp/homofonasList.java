@@ -111,33 +111,6 @@ public class homofonasList extends AppCompatActivity {
 
 
 
-
-
-
-    //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-    public void getOneContact () {
-        db.open();
-        Cursor c = db.getContact(dbId);
-        if (c.moveToFirst())
-            //DisplayContact(c)
-            ;
-        else
-            Toast.makeText(this, "No contact found", Toast.LENGTH_LONG).show();
-        db.close();
-    }
-
-    public void DisplayContact(Cursor c)
-    {
-        Toast.makeText(this,
-                "id: " + c.getString(0) + "\n" +
-                        "Name: " + c.getString(1) + "\n" +
-                        "Email: " + c.getString(2)+ "\n" +
-                        " ",
-                Toast.LENGTH_LONG).show();
-
-    }
-
-
     public void showToast(String str){
         Toast.makeText(this, str, Toast.LENGTH_LONG).show();
     }

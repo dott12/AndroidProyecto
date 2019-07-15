@@ -43,9 +43,10 @@ public class homofonasWord1 extends AppCompatActivity {
 
     public void toHomofonaWord2 (View view) {
         Intent intent = new Intent(this, homofonasWord2.class);
-        String test= "Haremos";
-        intent.putExtra("id", test);
+        String wordS2 = dbcounter;
+        intent.putExtra("wS2", wordS2);
         startActivity(intent);
+
 
     }
 
@@ -58,7 +59,8 @@ public class homofonasWord1 extends AppCompatActivity {
         palabra.setText(dbWord);
         significado.setText("Significado: "+dbMean);
         ejemplo.setText("Ejemplo de uso: "+dbEjemplo);
-        contraparte.setText("Contrparte: "+dbcounter);
+        contraparte.setText("Contraparte: "+dbcounter);
+
 /*
         db.open();
         Cursor c = db.getContact(7);
