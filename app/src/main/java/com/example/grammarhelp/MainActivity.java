@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         //InicializarBD();
        // getOneContact();
         //deleteContact();
+        //StringToArray();
         getAllContacts();
         //Palabra();
 
@@ -114,6 +115,23 @@ public class MainActivity extends AppCompatActivity {
         db.close();
         }
 
+    }
+
+    public void StringToArray(){
+        String testString = "This Is Test";
+        char[] stringToCharArray = testString.toCharArray();
+        for (int k=1; k<=stringToCharArray.length;k++) {
+            testString = testString + Integer.toString(k);
+        Toast.makeText(this, testString, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public String WordToNumber(String word){
+        String code ="";
+        String testword = "Ana";
+        char[] stringToCharArray = testword.toCharArray();
+
+        return code;
     }
 
 }

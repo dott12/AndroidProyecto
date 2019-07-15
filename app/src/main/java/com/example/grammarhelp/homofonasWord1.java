@@ -22,11 +22,12 @@ import android.widget.EditText;
 public class homofonasWord1 extends AppCompatActivity {
 
     DBAdapter db;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homofonas_word1);
+        db = new DBAdapter(this);
         Intent intent = getIntent();
         asignarVariables();
     }
@@ -34,20 +35,51 @@ public class homofonasWord1 extends AppCompatActivity {
     public void toHomofonaWord2 (View view) {
         Intent intent = new Intent(this, homofonasWord2.class);
         startActivity(intent);
-
+        String idC="2";
+        intent.putExtra("idCounter", idC);
     }
 
     public void asignarVariables(){
         TextView palabra = (TextView) findViewById(R.id.textView2);
-        TextView signficado = (TextView) findViewById(R.id.textView3);
+        TextView significado = (TextView) findViewById(R.id.textView3);
         TextView ejemplo = (TextView) findViewById(R.id.textView4);
         TextView contraparte = (TextView) findViewById(R.id.textView5);
 
-        palabra.setText("PalabraP");
-        signficado.setText("SignificadoP");
 
+
+        db.open();
+        Cursor c = db.getContact(7);
+        if (c.moveToFirst()){
+            //DisplayContact2(c);
+            palabra.setText(getPalabra(c));
+            significado.setText(getSignificado(c));
+            ejemplo.setText(getEjemplo(c));
+
+
+            }
+
+        else
+            Toast.makeText(this, "No contact found", Toast.LENGTH_LONG).show();
+        db.close();
 
     }
+
+
+    public String getPalabra(Cursor c){
+        return c.getString(1);
+    }
+    public String getSignificado(Cursor c){
+        return c.getString(2);
+    }
+
+    public String getEjemplo(Cursor c){
+        return c.getString(3);
+    }
+
+
+
+
+
 
 
 

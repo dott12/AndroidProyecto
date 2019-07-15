@@ -19,6 +19,7 @@ public class DBAdapter {
     static final String KEY_MEANING = "meaning";
     static final String KEY_EXAMPLE = "example";
     static final String KEY_COUNTERPART = "counterpart";
+    static final String KEY_COUNTERPARTID = "counterpartid";
     static final String TAG = "DBAdapter";
     static final String DATABASE_NAME = "MyDB";
     static final String DATABASE_TABLE = "contacts";
