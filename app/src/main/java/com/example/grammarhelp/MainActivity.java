@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
        // getOneContact();
         //deleteContact();
         //StringToArray();
-        cleanAll();
+        //cleanAll();
         getAllContacts();
         //ClonarDato();
         //Palabra();

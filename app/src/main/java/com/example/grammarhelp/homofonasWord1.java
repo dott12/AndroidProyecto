@@ -23,12 +23,21 @@ public class homofonasWord1 extends AppCompatActivity {
 
     DBAdapter db;
 
+    long dbId=0;
+    String dbWord="";
+    String dbMean="";
+    String dbEjemplo="";
+    String dbcounter="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homofonas_word1);
         db = new DBAdapter(this);
         Intent intent = getIntent();
+        String Query = intent.getStringExtra("wS1");
+                //dbWord = Query;
+        QueryPalabras(Query);
         asignarVariables();
     }
 
@@ -46,6 +55,11 @@ public class homofonasWord1 extends AppCompatActivity {
         TextView ejemplo = (TextView) findViewById(R.id.textView4);
         TextView contraparte = (TextView) findViewById(R.id.textView5);
 
+        palabra.setText(dbWord);
+        significado.setText("Significado: "+dbMean);
+        ejemplo.setText("Ejemplo de uso: "+dbEjemplo);
+        contraparte.setText("Contrparte: "+dbcounter);
+/*
         db.open();
         Cursor c = db.getContact(7);
         if (c.moveToFirst()){
@@ -58,27 +72,66 @@ public class homofonasWord1 extends AppCompatActivity {
         else
             Toast.makeText(this, "No contact found", Toast.LENGTH_LONG).show();
         db.close();
+        */
+    }
+
+    public void QueryPalabras (String query){
+        //String query="Haremos";
+        String idWord="";
+        String match="no match";
+        String tV="";
+        db.open();
+        Cursor c = db.getAllContacts();
+        if (c.moveToFirst())
+        {
+            do {
+                //query=getPalabra(c);
+                if (query.equalsIgnoreCase(getPalabra(c))){
+                    idWord=getID(c);
+                    dbId = Long.parseLong(idWord);
+                    Constructor(dbId);
+                }
+            } while (c.moveToNext());
+        }
+        db.close();
     }
 
 
+
+    public void Constructor(long rowid){
+        dbId= rowid;
+        Cursor c = db.getContact(dbId);
+        if (c.moveToFirst())
+        {
+            dbWord= getPalabra(c);
+            dbMean=getMean(c);
+            dbEjemplo=getEjm(c);
+            dbcounter=getCounter(c);
+
+            showToast(dbWord + " " +dbMean+dbEjemplo+dbcounter);
+        }
+        else
+            Toast.makeText(this, "No contact found", Toast.LENGTH_LONG).show();
+        db.close();
+        showToast(String.valueOf(dbId));
+    }
+
+    public void showToast(String str){
+        Toast.makeText(this, str, Toast.LENGTH_LONG).show();
+    }
+
+
+    public String getID(Cursor c){
+        return c.getString(0);
+    }
     public String getPalabra(Cursor c){
         return c.getString(1);
     }
-    public String getSignificado(Cursor c){
+    public String getMean(Cursor c){
         return c.getString(2);
     }
-
-    public String getEjemplo(Cursor c){
-        return c.getString(3);
-    }
-
-
-
-
-
-
-
-
+    public String getEjm(Cursor c){ return c.getString(3); }
+    public String getCounter(Cursor c){ return c.getString(5); }
 
 
 }

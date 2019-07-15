@@ -29,18 +29,24 @@ public class homofonasList extends AppCompatActivity {
         Intent intent = getIntent();
         String Query = intent.getStringExtra("wTQ");
         QueryPalabras(Query);
+        asignarVariables();
         //getOneContact();
-
-        TextView palabra = (TextView) findViewById(R.id.textView11);
-        palabra.setText(dbWord);
 
 
 
         //Toast.makeText(this, Query, Toast.LENGTH_LONG).show();
     }
 
+    public void asignarVariables(){
+
+        TextView palabra = (TextView) findViewById(R.id.textView11);
+        palabra.setText(dbWord);
+    }
+
     public void toHomofonaWord (View view) {
         Intent intent = new Intent(this, homofonasWord1.class);
+        String wordS1 = dbWord;
+        intent.putExtra("wS1", wordS1);
         startActivity(intent);
     }
 
