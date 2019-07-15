@@ -110,12 +110,12 @@ public class homofonasWord1 extends AppCompatActivity {
             dbEjemplo=getEjm(c);
             dbcounter=getCounter(c);
 
-            showToast(dbWord + " " +dbMean+dbEjemplo+dbcounter);
+            //showToast(dbWord + " " +dbMean+dbEjemplo+dbcounter);
         }
         else
             Toast.makeText(this, "No contact found", Toast.LENGTH_LONG).show();
         db.close();
-        showToast(String.valueOf(dbId));
+        //showToast(String.valueOf(dbId));
     }
 
     public void showToast(String str){

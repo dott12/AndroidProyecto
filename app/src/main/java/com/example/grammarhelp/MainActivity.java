@@ -181,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
         {
             do {
                 n=Integer.parseInt(getID(c));
-                showToast(String.valueOf(n));
+                //showToast(String.valueOf(n));
                 deleteContact(n);
             } while (c.moveToNext());
         }

@@ -80,6 +80,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.548" />
 
+    <!--
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
@@ -98,4 +99,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.076" />
+        -->
 </android.support.constraint.ConstraintLayout>
