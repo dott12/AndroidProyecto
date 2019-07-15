@@ -12,12 +12,12 @@
         <activity android:name=".ProcesosHF"></activity>
         <activity android:name=".DBAdapter" />
         <activity android:name=".homofonasSearch" />
-        <activity android:name=".homografasWord2" />
+
         <activity android:name=".homofonasWord2" />
-        <activity android:name=".homografasWord1" />
+
         <activity android:name=".homofonasWord1" />
-        <activity android:name=".homografaWord" />
-        <activity android:name=".homografasList" />
+
+
         <activity android:name=".homofonasList" />
         <activity android:name=".MainActivity">
             <intent-filter>

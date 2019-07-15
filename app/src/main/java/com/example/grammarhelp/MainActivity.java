@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         db = new DBAdapter(this);
        // InicializarBD();
         //getOneContact();
-
+        cleanAll();
 
 
     }
@@ -64,17 +64,16 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void toHomografas (View view) {
-        Intent intent = new Intent(this, homografasList.class);
-        startActivity(intent);
-    }
+
 
 
     public void addRegistros(){
         // String name,  String meaning, String example, String counterpart
         db.open();
-        long _id = db.insertContact("Aremos","Forma del verbo arar","Aremos la tierra para que crezca",2, "Haremos");
-        long _id2 = db.insertContact("Haremos","Forma del verbo hacer","Haremos un mundo mejor",1, "Aremos");
+        long _id = db.insertContact("Aremos","Forma del verbo arar","Aremos la tierra para que crezca",0, "Haremos");
+        long _id2 = db.insertContact("Haremos","Forma del verbo hacer","Haremos un mundo mejor",0, "Aremos");
+        long _id3 = db.insertContact("Abrasar","Quemar algo","Abrasa el pollo para servirlo",0, "Abrazar");
+        long _id4 = db.insertContact("Abrazar","Dar un abrazo","Los abrazos son buenos",0, "Abrasar");
         db.close();
     }
 
@@ -106,9 +105,9 @@ public class MainActivity extends AppCompatActivity {
     public void deleteContact (int c) {
 
         db.open();
-        if (db.deleteContact(c))
-            Toast.makeText(this, "Delete successful.", Toast.LENGTH_LONG).show();
-        else
+        if (db.deleteContact(c)) {
+            //Toast.makeText(this, "Delete successful.", Toast.LENGTH_LONG).show();
+        }else
             Toast.makeText(this, "Delete failed. " + String.valueOf(c), Toast.LENGTH_LONG).show();
         db.close();
 
