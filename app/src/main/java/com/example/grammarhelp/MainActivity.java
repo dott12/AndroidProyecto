@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     public void botonGetData(View view){
         //InicializarBD();
        // getOneContact();
+        //deleteContact();
         getAllContacts();
         //Palabra();
 
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         // String name,  String meaning, String example, String counterpart
         db.open();
         long _id = db.insertContact("Aremos","Forma del verbo arar","Aremos la tierra para que crezca",2);
-        long _id2 = db.insertContact("HAremos","Forma del verbo hacer","Haremos un mundo mejor",2);
+        long _id2 = db.insertContact("Haremos","Forma del verbo hacer","Haremos un mundo mejor",1);
         db.close();
     }
 
@@ -101,6 +102,18 @@ public class MainActivity extends AppCompatActivity {
         else
             Toast.makeText(this, "No contact found", Toast.LENGTH_LONG).show();
         db.close();
+    }
+
+    public void deleteContact () {
+        for (int c=1; c<=6;c++){
+        db.open();
+        if (db.deleteContact(c))
+            Toast.makeText(this, "Delete successful.", Toast.LENGTH_LONG).show();
+        else
+            Toast.makeText(this, "Delete failed.", Toast.LENGTH_LONG).show();
+        db.close();
+        }
+
     }
 
 }

@@ -60,4 +60,15 @@ public class VerContacto extends AppCompatActivity {
         name = idCampo.getText().toString();
     }
 
+ 	public void deleteContact () {
+
+        db.open();
+        if (db.deleteContact(numberID))
+            Toast.makeText(this, "Delete successful.", Toast.LENGTH_LONG).show();
+        else
+            Toast.makeText(this, "Delete failed.", Toast.LENGTH_LONG).show();
+        db.close();
+
+    }
+
 }
