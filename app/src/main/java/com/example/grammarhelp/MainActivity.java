@@ -30,10 +30,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void botonGetData(View view){
-        //InicializarBD();
+        //addRegistros();
        // getOneContact();
         //deleteContact();
         //StringToArray();
+        cleanAll();
         getAllContacts();
         //ClonarDato();
         //Palabra();
@@ -41,9 +42,6 @@ public class MainActivity extends AppCompatActivity {
         //QueryPalabras("Haremos");
 
     }
-
-
-
 
     public void getAllContacts (){
         db.open();
@@ -72,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void InicializarBD(){
+    public void addRegistros(){
         // String name,  String meaning, String example, String counterpart
         db.open();
         long _id = db.insertContact("Aremos","Forma del verbo arar","Aremos la tierra para que crezca",2, "Haremos");
@@ -105,15 +103,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public void deleteContact () {
-        for (int c=1; c<=6;c++){
+    public void deleteContact (int c) {
+
         db.open();
         if (db.deleteContact(c))
             Toast.makeText(this, "Delete successful.", Toast.LENGTH_LONG).show();
         else
-            Toast.makeText(this, "Delete failed.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Delete failed. " + String.valueOf(c), Toast.LENGTH_LONG).show();
         db.close();
-        }
 
     }
 
@@ -177,20 +174,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void cleanAll(){
-    int n=0;
+        int n=0;
         db.open();
         Cursor c = db.getAllContacts();
         if (c.moveToFirst())
         {
             do {
-                n++;
+                n=Integer.parseInt(getID(c));
+                showToast(String.valueOf(n));
+                deleteContact(n);
             } while (c.moveToNext());
         }
         db.close();
+        addRegistros();
     }
 
+    public void showToast(String str){
 
+        Toast.makeText(this, str, Toast.LENGTH_LONG).show();
 
+    }
 
 
 }

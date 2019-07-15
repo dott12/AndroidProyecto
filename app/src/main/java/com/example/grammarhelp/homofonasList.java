@@ -58,6 +58,7 @@ public class homofonasList extends AppCompatActivity {
                     dbId = Long.parseLong(idWord);
                     Constructor(dbId);
 
+
                 }
 
 
