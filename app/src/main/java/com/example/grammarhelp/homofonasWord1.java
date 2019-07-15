@@ -34,12 +34,13 @@ public class homofonasWord1 extends AppCompatActivity {
 
     public void toHomofonaWord2 (View view) {
         Intent intent = new Intent(this, homofonasWord2.class);
+        String test= "Haremos";
+        intent.putExtra("id", test);
         startActivity(intent);
-        String idC="2";
-        intent.putExtra("idCounter", idC);
+
     }
 
-    public void asignarVariables(){
+    public void asignarVariables() {
         TextView palabra = (TextView) findViewById(R.id.textView2);
         TextView significado = (TextView) findViewById(R.id.textView3);
         TextView ejemplo = (TextView) findViewById(R.id.textView4);
@@ -56,7 +57,7 @@ public class homofonasWord1 extends AppCompatActivity {
             ejemplo.setText(getEjemplo(c));
 
 
-            }
+        }
 
         else
             Toast.makeText(this, "No contact found", Toast.LENGTH_LONG).show();
