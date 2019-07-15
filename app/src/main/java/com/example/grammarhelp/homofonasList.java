@@ -51,7 +51,12 @@ public class homofonasList extends AppCompatActivity {
     }
 
     public void toHomofonasSearch (View view) {
-        Intent intent = new Intent(this, homofonasSearch.class);
+
+        EditText editText3 = (EditText) findViewById(R.id.editText2);
+        String wordSS = editText3.getText().toString();
+
+        Intent intent = new Intent(this, homofonasList.class);
+        intent.putExtra("wTQ", wordSS);
         startActivity(intent);
     }
 
