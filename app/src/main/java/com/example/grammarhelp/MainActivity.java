@@ -34,8 +34,14 @@ public class MainActivity extends AppCompatActivity {
         //deleteContact();
         //StringToArray();
         //getAllContacts();
+        ClonarDato();
         //Palabra();
-        mostrarToast();
+        //mostrarToast();
+
+    }
+
+    public void ClonarDato(){
+       long _id = db.insertClone(255,"Aremos","Forma del verbo arar","Aremos la tierra para que crezca",2, "Haremos");
 
     }
 
@@ -66,8 +72,8 @@ public class MainActivity extends AppCompatActivity {
     public void InicializarBD(){
         // String name,  String meaning, String example, String counterpart
         db.open();
-        long _id = db.insertContact("Aremos","Forma del verbo arar","Aremos la tierra para que crezca",2);
-        long _id2 = db.insertContact("Haremos","Forma del verbo hacer","Haremos un mundo mejor",1);
+        long _id = db.insertContact("Aremos","Forma del verbo arar","Aremos la tierra para que crezca",2, "Haremos");
+        long _id2 = db.insertContact("Haremos","Forma del verbo hacer","Haremos un mundo mejor",1, "Aremos");
         db.close();
     }
 

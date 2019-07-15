@@ -18,16 +18,16 @@ public class DBAdapter {
     static final String KEY_NAME = "name";
     static final String KEY_MEANING = "meaning";
     static final String KEY_EXAMPLE = "example";
+    static final String KEY_CPID = "cp_id";
     static final String KEY_COUNTERPART = "counterpart";
-    static final String KEY_COUNTERPARTID = "counterpartid";
     static final String TAG = "DBAdapter";
     static final String DATABASE_NAME = "MyDB";
     static final String DATABASE_TABLE = "contacts";
-    static final int DATABASE_VERSION = 3;
+    static final int DATABASE_VERSION = 4;
     static final String DATABASE_CREATE =
             "create table contacts (_id integer primary key autoincrement, "
                     + "name text not null, " +
-                    "meaning text not null,example text not null, counterpart integer not null);";
+                    "meaning text not null,example text not null, cp_id integer not null, counterpart text not null);";
 
     final Context context;
     DatabaseHelper DBHelper;
@@ -59,9 +59,6 @@ public class DBAdapter {
 
 
 
-
-
-
         }
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
@@ -84,12 +81,25 @@ public class DBAdapter {
         DBHelper.close();
     }
     //---insert a contact into the database---
-    public long insertContact(String name,  String meaning, String example, int counterpart)
+    public long insertClone(int newID, String name,  String meaning, String example, int cp_id, String counterpart)
+    {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put(KEY_ROWID, newID);
+        initialValues.put(KEY_NAME, name);
+        initialValues.put(KEY_MEANING, meaning);
+        initialValues.put(KEY_EXAMPLE, example);
+        initialValues.put(KEY_CPID, cp_id);
+        initialValues.put(KEY_COUNTERPART, counterpart);
+        return db.insert(DATABASE_TABLE, null, initialValues);
+    }
+
+    public long insertContact(String name,  String meaning, String example, int cp_id, String counterpart)
     {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_NAME, name);
         initialValues.put(KEY_MEANING, meaning);
         initialValues.put(KEY_EXAMPLE, example);
+        initialValues.put(KEY_CPID, cp_id);
         initialValues.put(KEY_COUNTERPART, counterpart);
         return db.insert(DATABASE_TABLE, null, initialValues);
     }
@@ -107,6 +117,7 @@ public class DBAdapter {
                         KEY_NAME,
                         KEY_MEANING,
                         KEY_EXAMPLE,
+                        KEY_CPID,
                         KEY_COUNTERPART}, null, null, null, null, null);
     }
 
@@ -119,6 +130,7 @@ public class DBAdapter {
                                         KEY_NAME,
                                         KEY_MEANING,
                                         KEY_EXAMPLE,
+                                        KEY_CPID,
                                         KEY_COUNTERPART}, KEY_ROWID + "=" + rowId, null,
                         null, null, null, null);
         if (mCursor != null) {
@@ -135,6 +147,7 @@ public class DBAdapter {
                                         KEY_NAME,
                                         KEY_MEANING,
                                         KEY_EXAMPLE,
+                                        KEY_CPID,
                                         KEY_COUNTERPART}, KEY_ROWID + "=" + rowId, null,
                         null, null, null, null);
         if (mCursor != null) {
@@ -143,15 +156,25 @@ public class DBAdapter {
         return mCursor;
     }
     //---updates a contact---
-    public boolean updateContact(long rowId, String name, String meaning, String example, int counterpart)
+    public boolean updateContact(long rowId, String name, String meaning, String example, int cp_id, String counterpart)
     {
         ContentValues args = new ContentValues();
         args.put(KEY_NAME, name);
         args.put(KEY_MEANING, meaning);
         args.put(KEY_EXAMPLE, example);
+        args.put(KEY_CPID, cp_id);
         args.put(KEY_COUNTERPART, counterpart);
 
         return db.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;
+    }
+
+    public boolean ChangeIDContact(long rowId, long newid)
+    {
+        ContentValues args = new ContentValues();
+        args.put(KEY_ROWID, newid);
+
+
+        return db.update(DATABASE_TABLE, args, KEY_ROWID + "=" + newid, null) > 0;
     }
 
     public Cursor getWord(String palabra){
