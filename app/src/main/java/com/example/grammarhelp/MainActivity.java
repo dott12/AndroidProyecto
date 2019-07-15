@@ -33,8 +33,9 @@ public class MainActivity extends AppCompatActivity {
        // getOneContact();
         //deleteContact();
         //StringToArray();
-        getAllContacts();
+        //getAllContacts();
         //Palabra();
+        mostrarToast();
 
     }
 
@@ -93,17 +94,7 @@ public class MainActivity extends AppCompatActivity {
         db.close();
     }
 
-    public void Palabra() {
-        db.open();
-        String word = "aremos";
 
-        Cursor c = db.getWord(word);
-        if (c.moveToFirst())
-            DisplayContact(c);
-        else
-            Toast.makeText(this, "No contact found", Toast.LENGTH_LONG).show();
-        db.close();
-    }
 
     public void deleteContact () {
         for (int c=1; c<=6;c++){
@@ -117,21 +108,38 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void StringToArray(){
-        String testString = "This Is Test";
-        char[] stringToCharArray = testString.toCharArray();
-        for (int k=1; k<=stringToCharArray.length;k++) {
-            testString = testString + Integer.toString(k);
-        Toast.makeText(this, testString, Toast.LENGTH_LONG).show();
+    public void mostrarToast(){
+
+        Toast.makeText(this, StringToArray("Ana"), Toast.LENGTH_LONG).show();
+
+    }
+
+    public String StringToArray(String palabra){
+        String testString = "Ana";
+        palabra = palabra.toUpperCase();
+        String result="";
+        char[] sToChar = palabra.toCharArray();
+
+        for (int s=0;s<sToChar.length;s++){
+
+            char c = sToChar[s];
+
+            switch(c) {
+                case 'A':
+                    result = result + "1";
+                    break;
+                case 'N':
+                    result = result + "14";
+                    break;
+                default:
+                    // code block
+                    }
         }
+        return result;
     }
 
-    public String WordToNumber(String word){
-        String code ="";
-        String testword = "Ana";
-        char[] stringToCharArray = testword.toCharArray();
 
-        return code;
-    }
+
+
 
 }
