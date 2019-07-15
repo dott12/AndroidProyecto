@@ -34,16 +34,14 @@ public class MainActivity extends AppCompatActivity {
         //deleteContact();
         //StringToArray();
         //getAllContacts();
-        ClonarDato();
+        //ClonarDato();
         //Palabra();
         //mostrarToast();
+        QueryPalabras("Haremos");
 
     }
 
-    public void ClonarDato(){
-       long _id = db.insertClone(255,"Aremos","Forma del verbo arar","Aremos la tierra para que crezca",2, "Haremos");
 
-    }
 
 
     public void getAllContacts (){
@@ -142,6 +140,34 @@ public class MainActivity extends AppCompatActivity {
                     }
         }
         return result;
+    }
+
+    public void QueryPalabras (String query){
+        //String query="Haremos";
+        String match="no match";
+        db.open();
+        Cursor c = db.getAllContacts();
+        if (c.moveToFirst())
+        {
+            do {
+                //query=getPalabra(c);
+                if (query.equalsIgnoreCase(getPalabra(c))){
+
+                    match = getID(c)+ " = "+ "match";
+                }
+
+                Toast.makeText(this, match, Toast.LENGTH_LONG).show();
+            } while (c.moveToNext());
+        }
+        db.close();
+    }
+
+    public String getPalabra(Cursor c){
+        return c.getString(1);
+    }
+
+    public String getID(Cursor c){
+        return c.getString(0);
     }
 
 
