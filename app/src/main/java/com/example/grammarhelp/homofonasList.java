@@ -16,6 +16,10 @@ public class homofonasList extends AppCompatActivity {
 
     long dbId=0;
     String dbWord="";
+    String dbMean="";
+    String dbEjemplo="";
+    String dbcounter="";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +29,10 @@ public class homofonasList extends AppCompatActivity {
         Intent intent = getIntent();
         String Query = intent.getStringExtra("wTQ");
         QueryPalabras(Query);
-        getOneContact();
+        //getOneContact();
+
+        TextView palabra = (TextView) findViewById(R.id.textView11);
+        palabra.setText(dbWord);
 
 
 
@@ -57,36 +64,57 @@ public class homofonasList extends AppCompatActivity {
                     idWord=getID(c);
                     dbId = Long.parseLong(idWord);
                     Constructor(dbId);
-
-
                 }
-
-
             } while (c.moveToNext());
         }
         db.close();
     }
 
-    public String getPalabra(Cursor c){
-        return c.getString(1);
+
+
+    public void Constructor(long rowid){
+        dbId= rowid;
+        Cursor c = db.getContact(dbId);
+        if (c.moveToFirst())
+            {
+               dbWord= getPalabra(c);
+                dbMean=getMean(c);
+                dbEjemplo=getEjm(c);
+                dbcounter=getCounter(c);
+
+                showToast(dbWord + " " +dbMean+dbEjemplo+dbcounter);
+            }
+        else
+            Toast.makeText(this, "No contact found", Toast.LENGTH_LONG).show();
+            db.close();
+            showToast(String.valueOf(dbId));
     }
 
     public String getID(Cursor c){
         return c.getString(0);
     }
-
-    public void Constructor(long rowid){
-        dbId= rowid;
-        showToast(String.valueOf(dbId));
+    public String getPalabra(Cursor c){
+        return c.getString(1);
     }
+    public String getMean(Cursor c){
+        return c.getString(2);
+    }
+    public String getEjm(Cursor c){ return c.getString(3); }
+    public String getCounter(Cursor c){ return c.getString(5); }
+
+
+
+
+
+
 
     //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     public void getOneContact () {
         db.open();
-
         Cursor c = db.getContact(dbId);
         if (c.moveToFirst())
-            DisplayContact(c);
+            //DisplayContact(c)
+            ;
         else
             Toast.makeText(this, "No contact found", Toast.LENGTH_LONG).show();
         db.close();
@@ -104,14 +132,8 @@ public class homofonasList extends AppCompatActivity {
     }
 
 
-
-
-
-
     public void showToast(String str){
-
         Toast.makeText(this, str, Toast.LENGTH_LONG).show();
-
     }
     
 }
