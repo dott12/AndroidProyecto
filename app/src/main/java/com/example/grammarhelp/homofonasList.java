@@ -41,6 +41,7 @@ public class homofonasList extends AppCompatActivity {
 
         TextView palabra = (TextView) findViewById(R.id.textView11);
         palabra.setText(dbWord);
+        palabra.setTextColor(0xff0000EE);
     }
 
     public void toHomofonaWord (View view) {
