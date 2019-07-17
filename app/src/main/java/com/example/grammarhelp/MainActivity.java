@@ -64,6 +64,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void toPermisos (View view) {
+
+
+        Intent intent = new Intent(this, permisos.class);
+        startActivity(intent);
+    }
+
 
 
 

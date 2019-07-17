@@ -56,14 +56,18 @@ public class homofonasWord1 extends AppCompatActivity {
         TextView ejemplo = (TextView) findViewById(R.id.textView4);
         TextView contraparte = (TextView) findViewById(R.id.textView5);
 
-        palabra.setTextColor(0xff000000);
+        //palabra.setTextColor(0xff000000);
+        significado.setTextColor(0xff000000);
+        ejemplo.setTextColor(0xff000000);
+
+        contraparte.setTextColor(0xff0000EE);
 
 
 
         palabra.setText(dbWord);
-        significado.setText("Significado: "+dbMean);
-        ejemplo.setText("Ejemplo de uso: "+dbEjemplo);
-        contraparte.setText("Contraparte: "+dbcounter);
+        significado.setText(" "+dbMean);
+        ejemplo.setText(" "+dbEjemplo);
+        contraparte.setText(" "+dbcounter);
 
 /*
         db.open();
