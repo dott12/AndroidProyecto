@@ -36,7 +36,7 @@ public class homofonasWord1 extends AppCompatActivity {
         db = new DBAdapter(this);
         Intent intent = getIntent();
         String Query = intent.getStringExtra("wS1");
-                //dbWord = Query;
+                //dbWord = Query
         QueryPalabras(Query);
         asignarVariables();
     }

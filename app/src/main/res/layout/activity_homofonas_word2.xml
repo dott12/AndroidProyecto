@@ -35,7 +35,7 @@
         android:background="@color/Blue2"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
-        android:text="Ejemplo de uso"
+        android:text="Ejemplo de uso:"
         android:textColor="@color/white"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,7 +55,7 @@
         android:background="@color/Blue2"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
-        android:text="Significado"
+        android:text="Significado:"
         android:textColor="@color/white"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -118,7 +118,7 @@
 
     <TextView
         android:id="@+id/textView25"
-        android:layout_width="175dp"
+        android:layout_width="164dp"
         android:layout_height="64dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -137,7 +137,7 @@
 
     <TextView
         android:id="@+id/textView14"
-        android:layout_width="173dp"
+        android:layout_width="179dp"
         android:layout_height="65dp"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
@@ -145,7 +145,7 @@
         android:background="@color/Blue2"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
-        android:text="Contraparte"
+        android:text="Contraparte:"
         android:textColor="@color/white"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
