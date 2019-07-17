@@ -155,6 +155,25 @@ public class MainActivity extends AppCompatActivity {
         long _id51 = db.insertContact("Bah","Expresión de desdén o desacuerdo","¡Bah!, no estoy de acuerdo con lo que él dice",0, "Va");
         long _id52 = db.insertContact("Va","Del verbo ir","El niño va a la tienda a hacer un mandado",0, "Bah");
 
+        long _id53 = db.insertContact("Bacante","Adorador del dios Baco","Ese grupo de personas es bacante",0, "Vacante");
+        long _id54 = db.insertContact("Vacante","Del verbo ir","Hay una vacante para el puesto de programador",0, "Bacante");
+
+        long _id55 = db.insertContact("Bacía","Recipiente","Esa Bacía contiene agua",0, "Vacía");
+        long _id56 = db.insertContact("Vacía","Desocupado","Ese jarrón está vacío",0, "Bacía");
+
+        long _id57 = db.insertContact("Baqueta","Pieza para limpiar la escopeta; Pieza  para tocar la batería o tambor","Me compré dos pares de baquetas para el concierto",0, "Vaqueta");
+        long _id58 = db.insertContact("Vaqueta","Cuero o lienzo de vaca","La vaqueta se emplea en marroquinería para elaborar sillones, maletas y otros objetos",0, "Baqueta");
+
+        long _id59 = db.insertContact("Barón","Titulo nobiliario","Los grandes vasallos de Francia o de Inglaterra eran los altos barones",0, "Varón");
+        long _id60 = db.insertContact("Varón","Hombre","Ese varón es muy elegante",0, "Barón");
+
+        long _id61 = db.insertContact("Basto","Tosco o grosero","Me respondio de modo muy basto",0, "Vasto");
+        long _id62 = db.insertContact("Vasto","Extenso","El mar es muy vasto",0, "Basto");
+
+        long _id63 = db.insertContact("Valla","Construcción hecha de cualquier material para cercar un terreno","Una valla separa las dos parcelas",0, "Vaya");
+        long _id64 = db.insertContact("Vaya","Del verbo ir","Vaya a recoger el premio",0, "Valla");
+
+
         db.close();
     }
 
