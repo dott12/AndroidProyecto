@@ -83,14 +83,11 @@ public class MainActivity extends AppCompatActivity {
         long _id3 = db.insertContact("Abrasar","Quemar algo","Abrasa el pollo para servirlo",0, "Abrazar");
         long _id4 = db.insertContact("Abrazar","Dar un abrazo","Los abrazos son buenos",0, "Abrasar");
 
-        long _id5 = db.insertContact("A","Primera letra del alfabeto","La letra a es la mas usada en el español",0, "A");
-        long _id6 = db.insertContact("Ha","Del verbo haber","El niño ha logrado ganar el campeonato",0, "Ha");
+        long _id5 = db.insertContact("A","Primera letra del alfabeto","La letra a es la mas usada en el español",0, "Ha");
+        long _id6 = db.insertContact("Ha","Del verbo haber","El niño ha logrado ganar el campeonato",0, "a");
 
-        long _id7 = db.insertContact("Abollar","Realizar abolladuras a un objeto de metal","El carro quedo abollado por las balas",0, "A");
-        long _id8 = db.insertContact("Aboyar","Colocar boyas en el mar para detener redes o hacer limitaciones","Vimos a los a guardacostas aboyando la bahia.",0, "Ha");
-
-        long _id9 = db.insertContact("Abollar","Realizar abolladuras a un objeto de metal","El carro quedo abollado por las balas",0, "A");
-        long _id10 = db.insertContact("Aboyar","Colocar boyas en el mar para detener redes o hacer limitaciones","Vimos a los a guardacostas aboyando la bahia.",0, "Ha");
+        long _id7 = db.insertContact("Abollar","Realizar abolladuras a un objeto de metal","El carro quedo abollado por las balas",0, "Aboyar");
+        long _id8 = db.insertContact("Aboyar","Colocar boyas en el mar para detener redes o hacer limitaciones","Vimos a los a guardacostas aboyando la bahia.",0, "Abollar");
 
 
         db.close();
