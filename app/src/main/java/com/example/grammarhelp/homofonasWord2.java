@@ -33,6 +33,11 @@ public class homofonasWord2 extends AppCompatActivity {
         asignarVariables();
     }
 
+    public void IrMainActivity (View view){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
     public void toHomofonaWord1 (View view) {
         Intent intent = new Intent(this, homofonasWord1.class);
         String wordS1 = dbcounter;
@@ -52,9 +57,9 @@ public class homofonasWord2 extends AppCompatActivity {
         ejemplo.setTextColor(0xff000000);
 
         palabra.setText(dbWord);
-        significado.setText("Significado: "+dbMean);
-        ejemplo.setText("Ejemplo de uso: "+dbEjemplo);
-        contraparte.setText("Contrparte: "+dbcounter);
+        significado.setText(" "+dbMean);
+        ejemplo.setText(" "+dbEjemplo);
+        contraparte.setText(" "+dbcounter);
     }
 
     public void QueryPalabras (String query){

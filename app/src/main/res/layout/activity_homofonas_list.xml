@@ -42,8 +42,8 @@
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
         android:text="PalabraResultado"
-        android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textColor="@color/Black"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,12 +83,12 @@
         android:layout_marginBottom="8dp"
         android:text="Resultados encontrados:"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.261"
+        app:layout_constraintHorizontal_bias="0.583"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.216" />
+        app:layout_constraintVertical_bias="0.21" />
 
 </android.support.constraint.ConstraintLayout>

@@ -41,6 +41,11 @@ public class homofonasWord1 extends AppCompatActivity {
         asignarVariables();
     }
 
+    public void IrMainActivity (View view){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
     public void toHomofonaWord2 (View view) {
         Intent intent = new Intent(this, homofonasWord2.class);
         String wordS2 = dbcounter;
